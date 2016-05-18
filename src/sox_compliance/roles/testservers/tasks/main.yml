@@ -4,7 +4,7 @@
     module: rax
     credentials: ~/.raxpub
     name: "{{ prefix }}-testserver%02d"
-    flavor: "{{ flavor }}"
+    flavor: "{{ flavor2 }}"
     image: "{{ image }}"
     files: "{{ files }}"
     region: "{{ region }}"
@@ -14,20 +14,37 @@
     exact_count: yes
     group: "{{ prefix }}-test_sox"
     wait: yes
+    wait_timeout: 3000
   register: testcs
   tags:
-    - repose
-    - origin
+    - sox
 
-- name: gather info about servers
+#- name: gather info about servers
+#  set_fact:
+#    name: "{{ item.name }}"
+#    id: "{{ item.id }}"
+#    flavor: "{{ item.rax_flavor[\"id\"]}}"
+#    servername: "{{ item.rax_name }}"
+#    created: "{{ item.rax_created }}"
+#    updated: "{{ item.rax_updated }}"
+#  register: created_servers
+#  with_items: testcs.success
+#  when: testcs.action == 'create'
+
+- name: gather info about server write to files (account, servername, serverid, flavor, created, updated, status)
   local_action:
-    module: rax_facts
-    credentials: ~/.raxpub
-    name: "{{ testcs.name }}"
-    id: "{{ testcs.id }}"
-    flavor: "{{ testcs.rax_flavor[\"id\"]}}"
-    created: "{{ testcs.rax_created }}"
-    updated: "{{ testcs.rax_updated }}"
+#    module: copy
+#    dest: ~/sox/data/createdservers.csv
+#    content: 
+#      "{{ item.rax_name }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}"
+    module: lineinfile
+    create: yes
+    dest: ~/sox/data/serversinfo.csv
+    insertafter: EOF
+    line: "{{ item.rax_tenant_id }}, {{ item.rax_name }}, {{ item.id }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}, {{ item.rax_status }}"
   with_items: testcs.success
   when: testcs.action == 'create'
-
+ 
+#- name: debug
+#  debug: var=item.stdout
+#  with_items: testcs.result
