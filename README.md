@@ -12,7 +12,7 @@ $ vagrant ssh
 Note: edit VagrantFile to sync source code from local machine
 ````
 # example add line to sync source to vm
-config.vm.synced_folder "~/vagrant-sox/sox", "/home/vagrant/sox"
+config.vm.synced_folder "~/rax-servers/src/", "/home/vagrant/sox/"
 ````
 2-create ansible_hosts
 ````
