@@ -3,8 +3,16 @@ create, resize, delete servers
 
 1-Spin up a vagrant box
 ````
+$ mkdir vagrant_test //or what ever name
+$ cd vagrant_test
+$ vagrant init ubuntu/trusty64;
 $ vagrant up
 $ vagrant ssh
+````
+Note: edit VagrantFile to sync source code from local machine
+````
+# example add line to sync source to vm
+config.vm.synced_folder "~/vagrant-sox/sox", "/home/vagrant/sox"
 ````
 2-create ansible_hosts
 ````
