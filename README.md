@@ -58,3 +58,6 @@ $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ -vv
 ````
 $ ansible-playbook sox_compliance/delete.yml -i inventory/testgroup1/master/ -vvvv
 ````
+***Because ansible adds keys to known_hosts, and Rackspace rotates IPs, you might come across ip contentions. If so, just clean out your known_hosts file.
+
+> ~/.ssh/known_hosts
