@@ -1,0 +1,16 @@
+- name: Test Server delete requests
+  local_action:    
+    module: rax
+    credentials: ~/.raxpub
+    name: "{{ prefix }}-testserver%02d"
+    flavor: performance1-1
+    image: "{{ image }}"
+    region: "{{ region }}"
+    state: absent
+    count: 5
+    count_offset: 1
+    exact_count: yes
+    group: "{{ prefix }}-test_sox"
+    wait: yes
+    wait_timeout: 120
+  register: testcs

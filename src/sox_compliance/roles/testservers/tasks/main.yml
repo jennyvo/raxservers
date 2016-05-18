@@ -1,0 +1,33 @@
+---
+- name: Test Server build requests
+  local_action:    
+    module: rax
+    credentials: ~/.raxpub
+    name: "{{ prefix }}-testserver%02d"
+    flavor: "{{ flavor }}"
+    image: "{{ image }}"
+    files: "{{ files }}"
+    region: "{{ region }}"
+    state: present
+    count: 5
+    count_offset: 1
+    exact_count: yes
+    group: "{{ prefix }}-test_sox"
+    wait: yes
+  register: testcs
+  tags:
+    - repose
+    - origin
+
+- name: gather info about servers
+  local_action:
+    module: rax_facts
+    credentials: ~/.raxpub
+    name: "{{ testcs.name }}"
+    id: "{{ testcs.id }}"
+    flavor: "{{ testcs.rax_flavor[\"id\"]}}"
+    created: "{{ testcs.rax_created }}"
+    updated: "{{ testcs.rax_updated }}"
+  with_items: testcs.success
+  when: testcs.action == 'create'
+

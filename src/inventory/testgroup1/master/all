@@ -1,0 +1,4 @@
+prefix: "sox_testgroup1"
+region: "IAD"
+image:  "6f29d6a6-9972-4ae0-aa80-040fa2d6a9cf"
+flavor: "performance1-1"
