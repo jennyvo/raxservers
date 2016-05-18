@@ -2,11 +2,11 @@
 create, resize, delete servers
 
 1-Spin up a vagrant box
-  vagrant up
-  vagrant ssh
+  $ vagrant up
+  $ vagrant ssh
   
 2-create ansible_hosts
-  echo "127.0.0.1" > ~/ansible_hosts
+  $ echo "127.0.0.1" > ~/ansible_hosts
   
 3-update .raxpub ins src folder with user credential 
 
