@@ -17,6 +17,8 @@ config.vm.synced_folder "~/rax-servers/src/", "/home/vagrant/sox/"
 2-create ansible_hosts
 ````
 $ echo "127.0.0.1" > ~/ansible_hosts
+$ export ANSIBLE_HOSTS=~/ansible_hosts
+$ export ANSIBLE_HOST_KEY_CHECKING=false
 ````
 3-update .raxpub ins src folder with user credential 
 
