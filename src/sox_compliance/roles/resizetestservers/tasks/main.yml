@@ -1,0 +1,33 @@
+---
+- name: get identity info
+  local_action:
+    module: rax_identity
+    credentials: ~/.raxpub
+    region: "{{ region }}"
+  register: cred_info
+
+- name: debug
+  debug: var=contents.split("\n")[0]
+
+- name: resize specific server
+  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ contents.split(\"\n\")[0] }}/action -d '{\"resize\" : {\"flavorRef\" : \"{{ flavor4 }}\",\"OS-DCF:diskConfig\" : \"MANUAL\"}}' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
+- pause: minutes=4
+
+- name: confirm resize
+  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ contents.split(\"\n\")[0] }}/action -d '{\"confirmResize\": null }' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
+- pause: minutes=1
+
+- name: get server info
+  shell: "curl -X GET https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ contents.split(\"\n\")[0] }} -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
+  register: res_server
+
+- name: gather info about server write to files (account, servername, serverid, flavor, created, updated, status)
+  local_action:
+    module: lineinfile
+    create: yes
+    dest: ~/sox/data/serversinfo.csv
+    insertafter: EOF
+    line: "{{ cred_info.identity[\"tenant_id\"] }}, {{ res_server.stdout.server[\"name\"] }}, {{ res_server.stdout.server[\"name\"] }}, {{ res_server.stdout.server[\"flavor\"] }}, {{ res_server.stdout.server[\"created\"] }}, {{ res_server.stdout.server[\"updated\"] }}, {{ res_server.stdout.server[\"status\"] }}"
+#  with_items: res_testcs.success
+#  when: res_testcs.action == 'update'
+
