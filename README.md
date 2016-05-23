@@ -20,7 +20,7 @@ $ echo "127.0.0.1" > ~/ansible_hosts
 $ export ANSIBLE_HOSTS=~/ansible_hosts
 $ export ANSIBLE_HOST_KEY_CHECKING=false
 ````
-3-update .raxpub ins src folder with user credential 
+3-update ~/.raxpub (template in src) folder with user credential 
 
 4-install some missing package if need
 ````
@@ -56,6 +56,10 @@ $ ansible all -m ping
 ````
 $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ -vvvv
 ````
+  resize servers:
+````
+$ ansible-playbook sox_compliance/update.yml -i inventory/testgroup1/master/ -vvvv
+```` 
   delete servers:
 ````
 $ ansible-playbook sox_compliance/delete.yml -i inventory/testgroup1/master/ -vvvv
