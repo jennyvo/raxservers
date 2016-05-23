@@ -7,7 +7,7 @@
   register: cred_info
 
 - name: resize specific server
-  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ item }}/action -d '{\"resize\" : {\"flavorRef\" : \"{{ ['3','4','5','6']| random }}\",\"OS-DCF:diskConfig\" : \"MANUAL\"}}' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
+  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ item }}/action -d '{\"resize\" : {\"flavorRef\" : \"{{ [flaver2,flavor4,flavor5,flavor6,flavor7]| random }}\",\"OS-DCF:diskConfig\" : \"MANUAL\"}}' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
   with_items: "{{ servers }}"
 
 # depend on server size waiting time maybe longer

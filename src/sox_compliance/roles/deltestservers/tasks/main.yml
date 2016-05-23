@@ -1,4 +1,7 @@
 ---
+- name: check delete time
+  debug: var=deletetime
+
 - name: Test Server delete requests
   local_action:    
     module: rax
@@ -14,15 +17,11 @@
   with_items: "{{ servernames }}"
   register: del_testcs
 
-- name: debug
-  debug: var=item
-  with_items: del_testcs.results
-
-- name: gather info about server write to files (account, servername, serverid, flavor, created, updated, status)
+- name: gather info about server write to files (account, servername, serverid, flavor, created, updated (~deletetime), status)
   local_action:
     module: lineinfile
     create: yes
     dest: ~/sox/data/serversinfo.csv
     insertafter: EOF
-    line: "{{ item.success[0].rax_tenant_id }}, {{ item.success[0].name }}, {{ item.success[0].id }}, {{ item.success[0].rax_flavor[\"id\"] }}, {{ item.success[0].rax_created }}, {{ item.success[0].rax_updated }}, {{ item.success[0].rax_status }}"
+    line: "{{ item.success[0].rax_tenant_id }}, {{ item.success[0].name }}, {{ item.success[0].id }}, {{ item.success[0].rax_flavor[\"id\"] }}, {{ item.success[0].rax_created }}, {{ deletetime }}, {{ item.success[0].rax_status }}"
   with_items: del_testcs.results
