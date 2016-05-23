@@ -1,0 +1,11 @@
+---  
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    contents: "{{ lookup('file', '~/data/serverid.txt') }}"
+    contentlinks: "{{ lookup('file', '~/data/linkserver.txt') }}"
+    servers: "{{ contents.split(\"\n\") }}"
+  roles:
+    - getservers
+

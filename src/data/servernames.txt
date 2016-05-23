@@ -1,0 +1,2 @@
+sox_testgroup1_us-testserver01
+sox_testgroup1_us-testserver02

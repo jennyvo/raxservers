@@ -2,6 +2,9 @@
 - hosts: localhost
   connection: local
   gather_facts: true
+  vars: 
+    names: "{{ lookup('file', '~/data/servernames.txt') }}"
+    servernames: "{{ names.split(\"\n\") }}"
   roles:
      - deltestservers
 

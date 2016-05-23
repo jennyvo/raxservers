@@ -1,0 +1,23 @@
+---
+- name: Get facts about servers
+  local_action:
+    module: rax_facts
+    credentials: ~/.raxpub
+    id: "{{ item }}"
+    region: "{{ region }}"
+  with_items: "{{ servers }}" 
+  register: get_servers
+
+- name: debug
+  debug: var=item
+  with_items: get_servers.results
+
+- name: gather info about server write to files (account, servername, serverid, flavor, created, updated, status)
+  local_action:
+    module: lineinfile
+    create: yes
+    dest: ~/sox/data/serversinfo.csv
+    insertafter: EOF
+    line: '{{ item.ansible_facts["rax_tenant_id"] }}, {{ item.ansible_facts["name"] }}, {{ item.ansible_facts["id"] }}, {{ item.ansible_facts.rax_flavor["id"] }}, {{ item.ansible_facts["rax_created"] }}, {{ item.ansible_facts["rax_updated"] }}, {{ item.ansible_facts["status"] }}'
+  with_items: get_servers.results
+

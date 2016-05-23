@@ -3,8 +3,8 @@
   connection: local
   gather_facts: true
   vars: 
-    contents: "{{ lookup('file', '~/data/serverid.txt') }}"
-    contentlinks: "{{ lookup('file', '~/data/linkserver.txt') }}"
+    ids: "{{ lookup('file', '~/data/serverid.txt') }}"
+    servers: "{{ ids.split(\"\n\") }}"
   roles:
      - resizetestservers
-
+     - getservers

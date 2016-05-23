@@ -19,25 +19,6 @@
   tags:
     - sox
 
-#- name: gather serverid
-#  set_fact:
-#    servername: "{{ item.name }}"
-#    serverid: "{{ item.id }}"
-#    flavor: "{{ item.rax_flavor[\"id\"]}}"
-#    servername: "{{ item.rax_name }}"
-#    created: "{{ item.rax_created }}"
-#    updated: "{{ item.rax_updated }}"
-#  with_items: testcs.success
-#  when: testcs.action == 'create'
-#  register: serverids
-
-#- name: make a list
-#  set_fact:
-#    list_id: "{{ serverids.results | map(attribute='ansible_facts.serverid') | list }}"
-
-#- name: debug
-#  debug: var=list_id
-
 - name: delete serverid.txt to create new one
   local_action: 
     module: file
@@ -53,18 +34,18 @@
   with_items: testcs.success
   when: testcs.action == 'create'
 
-- name: delete serverid.txt to create new one
+- name: delete servernames.txt to create new one
   local_action:
     module: file
-    path: ~/data/linkserver.txt
+    path: ~/data/servernames.txt
     state: absent
 
-- name: save server id to file
+- name: save server name to file
   local_action:
     module: lineinfile
     create: yes
-    dest: ~/data/linkserver.txt
-    line: "{{ item.rax_links[0][\"href\"]}}"
+    dest: ~/data/servernames.txt
+    line: "{{ item.name }}"
   with_items: testcs.success
   when: testcs.action == 'create'
 
@@ -72,12 +53,9 @@
   local_action:
     module: lineinfile
     create: yes
-    dest: ~/data/serversinfo.csv
+    dest: ~/sox/data/serversinfo.csv
     insertafter: EOF
     line: "{{ item.rax_tenant_id }}, {{ item.rax_name }}, {{ item.id }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}, {{ item.rax_status }}"
   with_items: testcs.success
   when: testcs.action == 'create'
  
-#- name: debug
-#  debug: var=item.stdout
-#  with_items: testcs.result
