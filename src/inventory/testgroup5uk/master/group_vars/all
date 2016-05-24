@@ -1,6 +1,6 @@
 prefix: "sox_testgroup5_uk_1"
 resultfile: "serversinfouk.csv"
-region: "IAD"
+region: "ORD"
 image2:  "6f29d6a6-9972-4ae0-aa80-040fa2d6a9cf"
 image: "7 (Wheezy) (PVHVM)"
 flavor: "memory1-15"
