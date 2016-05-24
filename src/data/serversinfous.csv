@@ -1,0 +1,6 @@
+709284, sox_testgroup1_us_2-testserver01, d2c7e3bf-7b79-4a5e-b713-24627193e0a4, 2, 2016-05-24T19:35:12Z, 2016-05-24T19:53:29Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, 3645ed67-2a65-4aae-9c43-c448ae299318, 2, 2016-05-24T19:35:13Z, 2016-05-24T19:35:56Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, d2c7e3bf-7b79-4a5e-b713-24627193e0a4, 2, 2016-05-24T19:35:12Z, 2016-05-24T20:07:21Z, RESIZE, Resize
+709284, sox_testgroup1_us_2-testserver02, 3645ed67-2a65-4aae-9c43-c448ae299318, 3, 2016-05-24T19:35:13Z, 2016-05-24T20:12:50Z, ACTIVE, Resize
+709284, sox_testgroup1_us_2-testserver01, d2c7e3bf-7b79-4a5e-b713-24627193e0a4, 5, 2016-05-24T19:35:12Z, 2016-05-24T20:17:24Z, DELETED, delete
+709284, sox_testgroup1_us_2-testserver02, 3645ed67-2a65-4aae-9c43-c448ae299318, 3, 2016-05-24T19:35:13Z, 2016-05-24T20:12:50Z, DELETED, delete
