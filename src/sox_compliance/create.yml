@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  gather_facts: True
+  gather_facts: false
   vars:
     - files:
         /root/.ssh/authorized_keys: /home/vagrant/.ssh/id_rsa.pub

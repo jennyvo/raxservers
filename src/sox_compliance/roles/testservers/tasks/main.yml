@@ -3,8 +3,8 @@
   local_action:    
     module: rax
     credentials: ~/.raxpub
-    name: "{{ prefix }}-testserver%02d"
-    flavor: "{{ flavor2 }}"
+    name: "{{ prefix }}_testserver%02d"
+    flavor: "{{ flavor }}"
     image: "{{ image }}"
     files: "{{ files }}"
     region: "{{ region }}"
@@ -53,9 +53,9 @@
   local_action:
     module: lineinfile
     create: yes
-    dest: ~/sox/data/serversinfo.csv
+    dest: ~/sox/data/{{ resultfile }}
     insertafter: EOF
-    line: "{{ item.rax_tenant_id }}, {{ item.rax_name }}, {{ item.id }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}, {{ item.rax_status }}"
+    line: "{{ item.rax_tenant_id }}, {{ item.rax_name }}, {{ item.id }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}, {{ item.rax_status }}, {{ testcs.action }}"
   with_items: testcs.success
   when: testcs.action == 'create'
  

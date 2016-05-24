@@ -4,3 +4,23 @@
 709284, sox_testgroup1_us-testserver02, fc212d87-2035-4c31-9a85-f30e07320d88, 5, 2016-05-23T20:16:34Z, 2016-05-23T20:30:42Z, ACTIVE
 709284, sox_testgroup1_us-testserver01, 735bacd6-1d7f-4675-b8f8-3cde81628090, 4, 2016-05-23T20:16:33Z, 2016-05-23T21:41:37Z, DELETED
 709284, sox_testgroup1_us-testserver02, fc212d87-2035-4c31-9a85-f30e07320d88, 5, 2016-05-23T20:16:34Z, 2016-05-23T21:41:37Z, DELETED
+709284, sox_testgroup1_us_2-testserver01, fd727c99-1e48-490b-aef3-defc4d5d82db, 3, 2016-05-24T15:15:12Z, 2016-05-24T15:15:53Z, ACTIVE, Create
+709284, sox_testgroup1_us_2-testserver02, 877e8bbe-fd6f-4fbf-be5c-f94fd92b2779, 3, 2016-05-24T15:15:14Z, 2016-05-24T15:15:54Z, ACTIVE, Create
+709284, sox_testgroup1_us_2-testserver01, f0d34b24-a3a5-493e-8cb2-bc0f8abcb530, 3, 2016-05-24T15:28:50Z, 2016-05-24T15:29:56Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, 99be89bc-d7f5-47ce-8eb2-f38efecd8943, 3, 2016-05-24T15:28:52Z, 2016-05-24T15:30:24Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, f0d34b24-a3a5-493e-8cb2-bc0f8abcb530, 6, 2016-05-24T15:28:50Z, 2016-05-24T16:21:53Z, ACTIVE, Resize
+709284, sox_testgroup1_us_2-testserver02, 99be89bc-d7f5-47ce-8eb2-f38efecd8943, 8, 2016-05-24T15:28:52Z, 2016-05-24T16:21:54Z, ACTIVE, Resize
+709284, sox_testgroup1_us_2-testserver01, 7b58fa37-aec6-4852-b087-722d2d4a45ba, 2, 2016-05-24T18:40:00Z, 2016-05-24T18:40:42Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, 7f83acb5-3740-447b-81b6-a1872abb2000, 2, 2016-05-24T18:40:01Z, 2016-05-24T18:41:02Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, 7367d635-fbe9-4492-83f3-daab3edb20b3, 2, 2016-05-24T18:46:05Z, 2016-05-24T18:49:03Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, 49b7efe8-a69a-4c1a-ae52-0f21f602df90, 2, 2016-05-24T18:46:06Z, 2016-05-24T18:47:16Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, 7367d635-fbe9-4492-83f3-daab3edb20b3, 2, 2016-05-24T18:46:05Z, 2016-05-24T18:49:39Z, DELETED, delete
+709284, sox_testgroup1_us_2-testserver02, 49b7efe8-a69a-4c1a-ae52-0f21f602df90, 2, 2016-05-24T18:46:06Z, 2016-05-24T18:49:39Z, DELETED, delete
+709284, sox_testgroup1_us_2-testserver01, 09f85508-ec2f-4ad3-b293-ac12c83384fc, 2, 2016-05-24T18:56:47Z, 2016-05-24T18:57:30Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, fdd95525-7f62-468a-91d1-ba566bd89e14, 2, 2016-05-24T18:56:48Z, 2016-05-24T18:57:32Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, 09f85508-ec2f-4ad3-b293-ac12c83384fc, 2, 2016-05-24T18:56:47Z, 2016-05-24T18:57:54Z, DELETED, delete
+709284, sox_testgroup1_us_2-testserver02, fdd95525-7f62-468a-91d1-ba566bd89e14, 2, 2016-05-24T18:56:48Z, 2016-05-24T18:57:54Z, DELETED, delete
+709284, sox_testgroup1_us_2-testserver01, d0e7440b-ee3d-4284-9408-af709dc1c541, 2, 2016-05-24T19:00:40Z, 2016-05-24T19:01:30Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver02, fc12de5f-1f02-41e0-943c-0edcb2639f64, 2, 2016-05-24T19:00:42Z, 2016-05-24T19:01:30Z, ACTIVE, create
+709284, sox_testgroup1_us_2-testserver01, d0e7440b-ee3d-4284-9408-af709dc1c541, 7, 2016-05-24T19:00:40Z, 2016-05-24T19:21:28Z, ACTIVE, Resize
+709284, sox_testgroup1_us_2-testserver02, fc12de5f-1f02-41e0-943c-0edcb2639f64, 6, 2016-05-24T19:00:42Z, 2016-05-24T19:21:36Z, ACTIVE, Resize
