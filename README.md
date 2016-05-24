@@ -56,6 +56,10 @@ $ ansible all -m ping
 ````
 $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ -vvvv
 ````
+  or can use with --extra-vars
+````
+$ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ --extra-vars "prefix=testgroup1uk region=ORD" -vvvv
+````
   resize servers:
 ````
 $ ansible-playbook sox_compliance/update.yml -i inventory/testgroup1/master/ -vvvv
