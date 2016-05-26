@@ -15,10 +15,18 @@ Note:
 ````
 # example add line to sync source to vm
 config.vm.synced_folder "~/rax-servers/src/", "/home/vagrant/sox/"
+
+# you may need to increate memory from vm (by default 1024MB) to 2048MB
+  config.vm.provider "virtualbox" do |vb|
+...
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
+     vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
 ````
 2-create ansible_hosts
 ````
-$ echo "127.0.0.1" > ~/ansible_hosts
+$ echo "127.0.0.1" > ~/ansible_hosts  
 $ export ANSIBLE_HOSTS=~/ansible_hosts
 $ export ANSIBLE_HOST_KEY_CHECKING=false
 ````
@@ -42,9 +50,9 @@ $ ansible --version
 $ ssh-keygen -t rsa
 $ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys (make sure you don't overwrite the existing keys in authorized_keys)
 ````
-8-test
+8-test: from sox/ dir
 ````
-$ ansible all -m ping
+$ ansible all -m ping -i inventory/
   127.0.0.1 | success >> {
     "changed": false, 
     "ping": "pong"
@@ -58,7 +66,7 @@ $ ansible all -m ping
 ````
 $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ -vvvv
 ````
-  or can use with --extra-vars
+  or can use with --extra-vars (do the same for resize and delete servers)
 ````
 $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ --extra-vars "prefix=testgroup1uk region=LON" -vvvv
 ````
@@ -71,6 +79,7 @@ $ ansible-playbook sox_compliance/update.yml -i inventory/testgroup1/master/ -vv
 ````
 $ ansible-playbook sox_compliance/delete.yml -i inventory/testgroup1/master/ -vvvv
 ````
-***Because ansible adds keys to known_hosts, and Rackspace rotates IPs, you might come across ip contentions. If so, just clean out your known_hosts file.
+Note:
++ Because ansible adds keys to known_hosts, and Rackspace rotates IPs, you might come across ip contentions. If so, just clean out your known_hosts file.
 
 > ~/.ssh/known_hosts
