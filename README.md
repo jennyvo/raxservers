@@ -1,5 +1,5 @@
 # rax-servers
-create, resize, delete servers
+create, resize, delete rax servers
 
 1-Spin up a vagrant box
 ````
@@ -17,12 +17,12 @@ Note:
 config.vm.synced_folder "~/rax-servers/src/", "/home/vagrant/sox/"
 
 # you may need to increate memory from vm (by default 1024MB) to 2048MB
-  config.vm.provider "virtualbox" do |vb|
+config.vm.provider "virtualbox" do |vb|
 ...
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-     vb.customize ["modifyvm", :id, "--memory", "2048"]
-  end
+  # Customize the amount of memory on the VM:
+  # vb.memory = "1024"
+  vb.customize ["modifyvm", :id, "--memory", "2048"]
+end
 ````
 2-create ansible_hosts
 ````
