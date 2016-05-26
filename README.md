@@ -50,7 +50,7 @@ $ ansible all -m ping
 ````
 9-modify inventory/testgroup1/master/group_vars/all file to change flavor or image of servers want to create
 
-10-run playbook:
+10-run playbook: from sox/ directory
 
   create servers:
 ````
@@ -58,8 +58,9 @@ $ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ -vv
 ````
   or can use with --extra-vars
 ````
-$ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ --extra-vars "prefix=testgroup1uk region=ORD" -vvvv
+$ ansible-playbook sox_compliance/create.yml -i inventory/testgroup1/master/ --extra-vars "prefix=testgroup1uk region=LON" -vvvv
 ````
++ Notes: to create uk server using LON region have to use uk account credential.
   resize servers:
 ````
 $ ansible-playbook sox_compliance/update.yml -i inventory/testgroup1/master/ -vvvv
