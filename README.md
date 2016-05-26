@@ -9,7 +9,9 @@ $ vagrant init ubuntu/trusty64;
 $ vagrant up
 $ vagrant ssh
 ````
-Note: edit VagrantFile to sync source code from local machine
+Note: 
++ after vagrant init it added a VagrantFile, edit VagrantFile to sync source code from local machine
++ after access vm box (vagrant ssh), you may need to create ~/data and ~/sox and ~/sox/data dir to hold source codes and data files.
 ````
 # example add line to sync source to vm
 config.vm.synced_folder "~/rax-servers/src/", "/home/vagrant/sox/"
