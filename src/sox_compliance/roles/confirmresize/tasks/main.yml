@@ -1,0 +1,12 @@
+---
+- name: get identity info
+  local_action:
+    module: rax_identity
+    credentials: ~/.raxpub
+    region: "{{ region }}"
+  register: cred_info
+
+- name: confirm resize
+  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ item }}/action -d '{\"confirmResize\": null }' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
+  with_items: "{{ servers }}"
+- pause: minutes=1

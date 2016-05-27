@@ -1,0 +1,5 @@
+---
+- name: confirm status
+  include: roles/handlers/tasks/main.yml server_id={{ item }}
+  with_items: "{{ servers }}"  
+

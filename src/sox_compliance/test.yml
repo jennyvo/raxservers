@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
   connection: local
-  gather_facts: false
-  vars: 
+  gather_facts: true
+  vars:
     ids: "{{ lookup('file', '~/data/serverid.txt') }}"
     servers: "{{ ids.split(\"\n\") }}"
+    server_id: "{{ servers[0] }}"
   roles:
-     - resizetestservers
+#     - handlers
      - confirmstatus
-     - confirmresize
      - getservers

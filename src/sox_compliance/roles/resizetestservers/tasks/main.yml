@@ -9,11 +9,3 @@
 - name: resize specific server
   shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ item }}/action -d '{\"resize\" : {\"flavorRef\" : \"{{ [flavor2,flavor3,flavor4,flavor5,flavor6,flavor7]| random }}\",\"OS-DCF:diskConfig\" : \"MANUAL\"}}' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
   with_items: "{{ servers }}"
-
-# depend on server size waiting time maybe longer
-- pause: minutes=10
-
-- name: confirm resize
-  shell: "curl -X POST https://{{ region }}.servers.api.rackspacecloud.com/v2/{{ cred_info.identity[\"tenant_id\"] }}/servers/{{ item }}/action -d '{\"confirmResize\": null }' -H 'x-auth-token: {{ cred_info.identity[\"auth_token\"] }}' -H 'content-type: application/json' -v -k"
-  with_items: "{{ servers }}"
-- pause: minutes=1
