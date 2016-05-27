@@ -25,7 +25,7 @@
     path: ~/data/serverid.txt
     state: absent
 
-- name: save server id to file
+- name: save server id to file (for later use in update.yml)
   local_action: 
     module: lineinfile
     create: yes
@@ -40,7 +40,7 @@
     path: ~/data/servernames.txt
     state: absent
 
-- name: save server name to file
+- name: save server name to file (for later use in delete.yml)
   local_action:
     module: lineinfile
     create: yes
@@ -53,7 +53,7 @@
   local_action:
     module: lineinfile
     create: yes
-    dest: ~/sox/data/{{ resultfile }}
+    dest: ~/data/{{ resultfile }}
     insertafter: EOF
     line: "{{ item.rax_tenant_id }}, {{ item.rax_name }}, {{ item.id }}, {{ item.rax_flavor[\"id\"] }}, {{ item.rax_created }}, {{ item.rax_updated }}, {{ item.rax_status }}, {{ testcs.action }}"
   with_items: testcs.success
