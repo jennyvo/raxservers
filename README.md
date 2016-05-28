@@ -1,4 +1,4 @@
-# rax-servers
+# raxservers
 create, resize, delete rax servers
 
 1-Spin up a vagrant box
