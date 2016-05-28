@@ -10,3 +10,5 @@ flavor4: "5"
 flavor5: "6"
 flavor6: "7"
 flavor7: "8"
+retrytimes: 15
+delaytime: 30

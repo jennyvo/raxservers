@@ -10,3 +10,5 @@ flavor4: "compute1-15"
 flavor5: "compute1-30"
 flavor6: "compute1-60"
 flavor7: "compute1-8"
+retrytimes: 15
+delaytime: 30

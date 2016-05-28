@@ -1,5 +1,5 @@
 ---
-- name: get server facts retries 15 times delay 30 sec until got VERIRY_RESIZE
+- name: get server facts retries "{{ retrytimes }}" times delay "{{ delaytime }}" sec until got VERIRY_RESIZE
   local_action:
     module: rax_facts
     credentials: ~/.raxpub
@@ -7,8 +7,8 @@
     region: "{{ region }}"
   register: serverfacts
   until: serverfacts.ansible_facts.status == "VERIFY_RESIZE"
-  retries: 15
-  delay: 30
+  retries: "{{ retrytimes }}"
+  delay: "{{ delaytime }}"
   ignore_errors: false
 
 - name: debug

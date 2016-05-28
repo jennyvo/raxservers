@@ -10,3 +10,5 @@ flavor4: "general1-4"
 flavor5: "general1-8"
 flavor6: "general1-4"
 flavor7: "general1-8"
+retrytimes: 15
+delaytime: 30

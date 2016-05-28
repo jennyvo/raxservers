@@ -10,3 +10,6 @@ flavor4: "io1-90"
 flavor5: "io1-120"
 flavor6: "io1-60"
 flavor7: "io1-30"
+retrytimes: 15
+delaytime: 30
+

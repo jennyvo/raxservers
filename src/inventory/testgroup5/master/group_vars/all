@@ -10,3 +10,6 @@ flavor4: "memory1-120"
 flavor5: "memory1-240"
 flavor6: "memory1-30"
 flavor7: "memory1-60"
+retrytimes: 15
+delaytime: 30
+
